@@ -6,16 +6,15 @@ phases:
     runtime-version:
       nodejs: 10
     commands:
-      - echo "installing something"
+      - echo "Hello there"
   pre_build:
     commands:
-      - echo "we are in the pre build phase"
+      - echo "this is the pre-build stage"
   build:
     commands:
-      - echo "we are in the build block"
-      - echo "we will run some tests"
-      - grep -Fq "HEJHEJ" index.html
+      - echo "this is the build stage"
+
   post_build:
     commands:
-      - echo "we are in the post build phase"
+      - echo "this is the post build stage"
 
