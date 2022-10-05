@@ -1,20 +1,18 @@
-version: 0.2
-
-
+﻿version: 0.2
 phases:
-  install:
-    runtime-version:
-      nodejs: 10
-    commands:
-      - echo "Hello there"
   pre_build:
     commands:
-      - echo "this is the pre-build stage"
+      - echo Restore started on `date`
+      - dotnet restore WebAppstatic.csproj
   build:
     commands:
-      - echo "this is the build stage"
-
+      - echo Build started on `date`
+      - dotnet publish -c release -o ./build_output WebAppstatic.csproj
   post_build:
     commands:
-      - echo "this is the post build stage"
-
+      - echo "Deployed to s3"
+artifacts:
+  files:
+    - '**/*'
+    - ./build_output
+   
